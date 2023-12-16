@@ -1,0 +1,24 @@
+<h3>Listado de Heroes</h3>
+
+<div *ngIf="deleteHero; else nothingWasDelegted">
+  <h3>Heroe Borrado: <small class="text-danger">{{deleteHero}}</small></h3>
+</div>
+
+<!-- A diferencia del div el template no crea nada, solo queda en espera a ser llamado
+En este caso le agregamos una referencia para poder usar en nuestro div con el "#nombre" -->
+<ng-template #nothingWasDelegted>
+  <h3>No ha borrado nada.</h3>
+</ng-template>
+
+<button
+  *ngIf="heroNames.length>0"
+  (click)="removeLastHero()" class="btn btn-outline-danger">
+  Borrar Ultimo Hereo
+</button>
+
+<ul class="mt-2 list-group">
+  <li *ngFor="let name of heroNames" class="list-group-item">
+    <!-- pone en negrita los nombres -->
+    <strong>{{name}}</strong>
+  </li>
+</ul>
